@@ -135,6 +135,7 @@ class Settings_LayoutEditor_Module_Model extends Vtiger_Module_Model {
 		$db = PearDatabase::getInstance();
 
 		$label = $params['fieldLabel'] = trim($params['fieldLabel']);
+		$field_name = $params['fieldName'] = trim($params['fieldName']);
 		if($this->checkFieldExists($label)){
 			throw new Exception(vtranslate('LBL_DUPLICATE_FIELD_EXISTS', 'Settings::LayoutEditor'), 513);
 		}
@@ -144,15 +145,17 @@ class Settings_LayoutEditor_Module_Model extends Vtiger_Module_Model {
 		}
 
 		$max_fieldid = $db->getUniqueID("vtiger_field");
-		$columnName = 'cf_'.$max_fieldid;
+		//$columnName = 'cf_'.$max_fieldid;
+		$columnName = $field_name;
 		$custfld_fieldid = $max_fieldid;
 		$moduleName = $this->getName();
 
 		$focus = CRMEntity::getInstance($moduleName);
-		if (isset($focus->customFieldTable)) {
-			$tableName=$focus->customFieldTable[0];
+		if (isset($focus->table_name)) {
+			$tableName=$focus->table_name;
 		} else {
-			$tableName= 'vtiger_'.strtolower($moduleName).'cf';
+			//$tableName= 'vtiger_'.strtolower($moduleName).'cf';
+			$tableName= 'vtiger_'.strtolower($moduleName);
 		}
 
 		$details = $this->getTypeDetailsForAddField($fieldType, $params);

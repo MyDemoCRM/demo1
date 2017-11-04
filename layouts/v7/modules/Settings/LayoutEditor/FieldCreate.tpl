@@ -43,7 +43,7 @@
 									{/foreach}
 								</select>
 							</div>
-						</div> 
+						</div>
 					{/if}
 					<div class="form-group">
 						<label class="control-label fieldLabel col-sm-5">
@@ -53,7 +53,7 @@
 							<select class="fieldTypesList col-sm-9" name="fieldType" {if $IS_FIELD_EDIT_MODE} disabled="disabled"{/if}>
 								{foreach item=FIELD_TYPE from=$ADD_SUPPORTED_FIELD_TYPES}
 									{if !$IS_FIELD_EDIT_MODE and $FIELD_TYPE eq 'Relation'} {continue}{/if}
-									<option value="{$FIELD_TYPE}" 
+									<option value="{$FIELD_TYPE}"
 											{if ($FIELD_MODEL->getFieldDataTypeLabel() eq $FIELD_TYPE)}selected='selected'{/if}
 											{foreach key=TYPE_INFO item=TYPE_INFO_VALUE from=$FIELD_TYPE_INFO[$FIELD_TYPE]}
 												data-{$TYPE_INFO}="{$TYPE_INFO_VALUE}"
@@ -76,14 +76,26 @@
 					{if !$IS_FIELD_EDIT_MODE}
 						<div class="form-group supportedType lengthsupported">
 							<label class="control-label fieldLabel col-sm-5">
+								Field Name
+								&nbsp;<span class="redColor">*</span>
+							</label>
+							<div class="controls col-sm-7">
+								<input type="text" class='inputElement col-sm-9' maxlength="50" name="fieldName"
+									   value="{vtranslate($FIELD_MODEL->get('label'), $SELECTED_MODULE_NAME)}" data-rule-required='true' style='width: 75%' />
+							</div>
+						</div>
+
+						<div class="form-group supportedType lengthsupported">
+							<label class="control-label fieldLabel col-sm-5">
 								{vtranslate('LBL_LENGTH', $QUALIFIED_MODULE)}
 								&nbsp;<span class="redColor">*</span>
 							</label>
 							<div class="controls col-sm-7">
-								<input type="text" name="fieldLength" class="inputElement" value="" data-rule-required='true' 
+								<input type="text" name="fieldLength" class="inputElement" value="" data-rule-required='true'
 									data-rule-positive="true" data-rule-WholeNumber='true' data-rule-illegal='true' style='width: 75%'/>
 							</div>
 						</div>
+
 						<div class="form-group supportedType decimalsupported hide">
 							<label class="control-label fieldLabel col-sm-5">
 								{vtranslate('LBL_DECIMALS', $QUALIFIED_MODULE)}
@@ -228,7 +240,7 @@
 											<input type="hidden" name="masseditable" value="2" />
 										{/if}
 										<label class="checkbox" style="margin-left: 6%;">
-											<input type="checkbox" class="{if $FIELD_MODEL->isMassEditOptionDisabled()} cursorPointerNotAllowed {else} cursorPointer{/if}" name="masseditable" value="1" {if $FIELD_MODEL->get('masseditable') eq '1'}checked="checked" {/if} 
+											<input type="checkbox" class="{if $FIELD_MODEL->isMassEditOptionDisabled()} cursorPointerNotAllowed {else} cursorPointer{/if}" name="masseditable" value="1" {if $FIELD_MODEL->get('masseditable') eq '1'}checked="checked" {/if}
 												{if $FIELD_MODEL->isMassEditOptionDisabled()}readonly="readonly"{/if}/>
 										</label>
 									</div>
