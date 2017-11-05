@@ -180,7 +180,7 @@ $languageStrings = array(
 	'LBL_REPLY_ALL' => 'Reply all',
 
 	//Translation for all modules
-	'Accounts' => 'Organizations',
+	'Accounts' => 'Clientss',
 	'Assets' => 'Assets',
 	'Calendar' => 'Calendar',
 	'Campaigns' => 'Campaigns',
@@ -521,7 +521,7 @@ $languageStrings = array(
 	'LBL_PICKLIST' => 'Picklists',
 
 	// Added Common Keys for all modules
-	'Account Name' => 'Organization Name',
+	'Account Name' => 'Clients Name',
 	'Add Comment' => 'Add Comment',
 	'Adjustment' => 'Adjustment',
 	'Annual Revenue' => 'Annual Revenue',
@@ -715,7 +715,7 @@ $languageStrings = array(
 	'LBL_VTIGER_CRM_HONEST_OPEN_SOURCE' => 'vtiger CRM On Demand',
 
 	//Translations used in inventory modules for sopy address
-	'SINGLE_Accounts' => 'Organization',
+	'SINGLE_Accounts' => 'Clients',
 	'SINGLE_Contacts' => 'Contact',
 
 	//Weekdays in 3 letters translations
@@ -745,7 +745,7 @@ $languageStrings = array(
 	'Reminder Interval' => 'Popup Reminder Interval',
 
 	//Translations used in inventory modules for address
-	'SINGLE_Accounts' => 'Organization',
+	'SINGLE_Accounts' => 'Clients',
 	'SINGLE_Contacts' => 'Contact',
 	'HelpDesk' => 'Tickets',
 	'LBL_TAG_CLOUD' => 'Tag Cloud',
@@ -875,7 +875,7 @@ $languageStrings = array(
 	'LBL_FULLSCREEN' => 'Full Screen',
 	'LBL_SETUP_WEBFORMS' => 'Setup Webforms',
 	'LBL_MODULE_DISABLED' => ' Module is disabled',
-	'Organization Name' => 'Organization Name',
+	'Clients Name' => 'Clients Name',
 	'LBL_SOCIAL_TWITTER_WIDGET' => 'Twitter Activity',
 	'LBL_WEEK' => 'Week',
 	//Convert Lead and Potential
@@ -1035,7 +1035,7 @@ $languageStrings = array(
 	'LBL_DEFAULT_REPLY_TO_INFO' => 'This setting is applicable only for direct emails from CRM. It doesn\'t affect emails sent from workflows, email campaigns, etc.', 
 	'search_in_all_fields'=>'Search in All fields',
 	'search_in_name_field'=>'Search in Name field',
-	'LBL_LOOKUP_SEARCH_MODE_INFO'=>'Ex: In Contact creation form, when you enter text in the organization name box this setting will control what fields in Organization are to be searched',
+	'LBL_LOOKUP_SEARCH_MODE_INFO'=>'Ex: In Contact creation form, when you enter text in the Clients name box this setting will control what fields in Clients are to be searched',
 
 	'VAT' => 'VAT',
 	'Sales' => 'Sales',
@@ -1050,11 +1050,11 @@ $languageStrings = array(
 	//Singular Modulenames
 	'SINGLE_Potentials' => 'Opportunity',
 	'SINGLE_HelpDesk' => 'Ticket',
-	'SINGLE_Accounts' => 'Organization',
+	'SINGLE_Accounts' => 'Clients',
 	'SINGLE_Contacts' => 'Contact',
 	'SINGLE_Project' => 'Project',
 	'LBL_ROLLUP_COMMENTS_INFO' => "If Roll up is set to 'On' comments on related records will be shown. 
-								 For example, if you are viewing comments on an Organization record, comments added to related Contacts, Opportunities, Tickets, ..etc would also be displayed.",
+								 For example, if you are viewing comments on an Clients record, comments added to related Contacts, Opportunities, Tickets, ..etc would also be displayed.",
 	'LBL_ROLLUP_COMMENTS' => "Rollup Comments",
 
 	//others
@@ -1145,7 +1145,7 @@ $languageStrings = array(
 	'LBL_RECENT_COMMENTS' => 'Recent Comments',
 	'LBL_ENGAGEMENT_HISTORY' => 'Engagement History',
 	'LBL_NO_ENGAGEMENTS_FOUND' => 'No related Touchpoints',
-	'LBL_MARKETING' => 'MARKETING',
+	'LBL_MARKETING' => 'Administration',
 	'LBL_SALES' => 'SALES',
 	'LBL_PROJECT' => 'PROJECTS',
 	'LBL_TAGS' => 'Tags',
@@ -1266,11 +1266,11 @@ $languageStrings = array(
 	'LBL_REVOKE_ACCESS' => 'Revoke Access',
 	'GOOGLE_REVOKE_ACCESS_MESSAGE' => 'Clicking on this will remove existing Google authentication for Contacts and Calendar. It will not delete any records which are already synchronized.',
 	'OFFICE_REVOKE_ACCESS_MESSAGE' => 'Clicking on this will remove existing Office365 authentication for Contacts, Calendar and Emails. It will not delete any records which are already synchronized.',
-	'LBL_EMAIL_DOMAIN_HELPTEXT' => 'Email Domain field will be used to match Cases and Contacts created from Emails. For example, if a new support email comes from john@apple.com, it would be linked to Organization that has apple.com in the Email domain field. Multiple domains should be separated by commas',
+	'LBL_EMAIL_DOMAIN_HELPTEXT' => 'Email Domain field will be used to match Cases and Contacts created from Emails. For example, if a new support email comes from john@apple.com, it would be linked to Clients that has apple.com in the Email domain field. Multiple domains should be separated by commas',
 	'LBL_START_GUIDED_TOUR' => 'Start Guided Tour',
 	'LBL_MENU' => 'Menu',
 	'LBL_EMAIL_DOMAIN_HELPTEXT'=>'Email Domain field will be used to match Cases and Contacts created from Emails. '
-	. 'For example, if a new support email comes from john@apple.com, it would be linked to Organization that has '
+	. 'For example, if a new support email comes from john@apple.com, it would be linked to Clients that has '
 	. 'apple.com in the Email domain field. Multiple domains should be separated by commas',
 
 	'LBL_SHARED_LIST_NON_ADMIN_MESSAGE' => 'This is a Shared list. Please contact your CRM Administrator to configure columns for All list',
@@ -1405,7 +1405,7 @@ $jsLanguageStrings = array(
 
 	'OVERWRITE_EXISTING_MSG1' => 'Overwrite the existing address with the selected ',
 	'OVERWRITE_EXISTING_MSG2' => 'address details?',
-	'SINGLE_Accounts' => 'Organization',
+	'SINGLE_Accounts' => 'Clients',
 	'SINGLE_Contacts' => 'Contact',
 	'SINGLE_Project' => 'Project',
 	'SINGLE_ProjectMilestone' => 'Project Milestone',
@@ -1417,7 +1417,7 @@ $jsLanguageStrings = array(
 	'LBL_MASS_DELETE_CONFIRMATION' => 'Are you sure you want to delete the selected Records?',
 	'JS_LBL_SAVE' => 'Save',
 	'JS_LBL_CANCEL' => 'Cancel',
-	'JS_DUPLICTAE_CREATION_CONFIRMATION' => 'Organization Name already Exists.Do you want to create a duplicate record?',
+	'JS_DUPLICTAE_CREATION_CONFIRMATION' => 'Clients Name already Exists.Do you want to create a duplicate record?',
 
 	'SHOULD_BE_LESS_THAN_TODAY' => 'Must occur before today',
 	'JS_PLEASE_SELECT_ATLEAST_ONE_OPTION' => 'Please select at least one option',
@@ -1493,9 +1493,9 @@ $jsLanguageStrings = array(
 	'NONE_OF_THE_FIELD_VALUES_ARE_CHANGED_IN_MASS_EDIT' => 'None of the field values are changed in Mass Edit',
 
 	//Notification messages for inventory module
-	'JS_PLEASE_SELECT_AN_ACCOUNT_TO_COPY_ADDRESS' => 'Please select an Organization to copy address',
+	'JS_PLEASE_SELECT_AN_ACCOUNT_TO_COPY_ADDRESS' => 'Please select an Clients to copy address',
 	'JS_PLEASE_SELECT_AN_CONTACT_TO_COPY_ADDRESS' => 'Please select a Contact to copy address',
-	'JS_SELECTED_ACCOUNT_DOES_NOT_HAVE_AN_ADDRESS' => 'Selected Organization does not contain address to copy',
+	'JS_SELECTED_ACCOUNT_DOES_NOT_HAVE_AN_ADDRESS' => 'Selected Clients does not contain address to copy',
 	'JS_SELECTED_CONTACT_DOES_NOT_HAVE_AN_ADDRESS' => 'Selected Contact does not contain address to copy',
 	'JS_PLEASE_ENTER_PRIMARY_EMAIL_VALUE_TO_ENABLE_PORTAL_USER' => 'Please enter Primary email address to enable portal user',
 	'JS_PRIMARY_EMAIL_FIELD_DOES_NOT_EXISTS' => 'Primary email field does not exist to enable portal user',
@@ -1859,7 +1859,7 @@ $jsLanguageStrings = array(
 	'JS_TAB_RENAMED' => 'Renamed',
 	'JS_TAB_REORDERED' =>'Reordered',
 	//Convert Lead
-	'JS_CONVERT_LEAD_ERROR' => 'You have to enable either Organizations or Contacts module to convert the Lead.',
+	'JS_CONVERT_LEAD_ERROR' => 'You have to enable either Clientss or Contacts module to convert the Lead.',
 
 	'JS_CHECK_START_AND_END_DATE'=>'End Date & Time should be greater than or equal to Start Date & Time',
 	'JS_CHECK_START_AND_END_DATE_SHOULD_BE_GREATER'=> 'End Date & Time should be greater than Start Date & Time',
