@@ -1,10 +1,7 @@
 /.idea
 /cache
 /logs
-/middleware/.htaccess
-/middleware/application/config/database.php
-middleware/application/config/constants.php
-/test/templates_c/vlayout
+/test/templates_c/v7
 /storage
 /user_privileges
 config.inc.php
