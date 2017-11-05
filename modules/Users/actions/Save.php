@@ -7,7 +7,8 @@
  * Portions created by vtiger are Copyright (C) vtiger.
  * All Rights Reserved.
  *************************************************************************************/
-
+require_once('include/utils/utilsCustom.php');
+require_once('include/utils/utilsContact.php');
 class Users_Save_Action extends Vtiger_Save_Action {
 
 	public function checkPermission(Vtiger_Request $request) {
@@ -100,7 +101,11 @@ class Users_Save_Action extends Vtiger_Save_Action {
 				throw new AppException(vtranslate('LBL_DUPLICATE_USER_EXISTS', $module));
 			}
 		}
+
 		$recordModel = $this->saveRecord($request);
+
+		$userid = ($recordId) ? $recordId : $recordModel->getId();
+		$this->createCustomEntity($request, $userid);
 
 		if ($request->get('relationOperation')) {
 			$parentRecordModel = Vtiger_Record_Model::getInstanceById($request->get('sourceRecord'), $request->get('sourceModule'));
@@ -116,5 +121,48 @@ class Users_Save_Action extends Vtiger_Save_Action {
 		}
 
 		header("Location: $loadUrl");
+	}
+
+	function createCustomEntity($request, $recordId){
+		if($recordId) {
+			$first_name = $request->get('first_name');
+			$last_name = $request->get('last_name');
+			$title = $request->get('title');
+			$email1 = $request->get('email1');
+			$email2 = $request->get('email2');
+			$phone_work = $request->get('phone_work');
+			$phone_mobile = $request->get('phone_mobile');
+			$description = $request->get('description');
+			$address_street = $request->get('address_street');
+			$address_city = $request->get('address_city');
+			$address_state = $request->get('address_state');
+			$address_postalcode = $request->get('address_postalcode');
+			$address_country = $request->get('address_country');
+			$data_cd = array(
+				"firstname" => $first_name,
+				"lastname" => $last_name,
+				"mobile" => $phone_work,
+				"title" => $title,
+				"email" => $email1,
+				"secondaryemail" => $email2
+
+			);
+
+			$data_csd = array(
+				"homephone" => $phone_mobile
+
+			);
+
+			$data_ca = array(
+				"mailingstreet" => $address_street,
+				"mailingcity" => $address_city,
+				"mailingstate" => $address_state,
+				"mailingzip" => $address_postalcode,
+				"mailingcountry" => $address_country
+
+			);
+
+			setContactData($recordId, $data_cd, $data_csd, $data_ca, $description);
+		}
 	}
 }
