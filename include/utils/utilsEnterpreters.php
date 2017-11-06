@@ -1,6 +1,6 @@
 <?php
 
-function setContactData($userid, $request, $user_role_details)
+function setEnterpretersData($userid, $request, $user_role_details)
 {
     $first_name = $request->get('first_name');
     $last_name = $request->get('last_name');
@@ -41,7 +41,7 @@ function setContactData($userid, $request, $user_role_details)
 
     $profileid = $user_role_details['profileid'];
 
-    if ($profileid == 2) {
+    if ($profileid == 4) {
         $contactid = contactUpsertStatus($userid);
         $roleid = $user_role_details['roleid'];
         $parentrole = $user_role_details['parentrole'];
@@ -49,14 +49,14 @@ function setContactData($userid, $request, $user_role_details)
         $clientid = getClientIDByParentRole($roleid, $parentrole);
         if ($clientid != 0) {
             if ($contactid == '' || $contactid == 0)
-                createContact($clientid, $userid, $data_cd, $data_csd, $data_ca, $description);
+                createEnterpreters($clientid, $userid, $data_cd, $data_csd, $data_ca, $description);
             else
-                updateContact($userid, $contactid, $data_cd, $data_csd, $data_ca, $description);
+                updateEnterpreters($userid, $contactid, $data_cd, $data_csd, $data_ca, $description);
         }
     }
 }
 
-function createContact($clientid, $userid, $data_cd, $data_csd, $data_ca, $description){
+function createEnterpreters($clientid, $userid, $data_cd, $data_csd, $data_ca, $description){
     global $adb, $current_user;
     $current_user = $current_user->id;
     $module = 'Contacts';
@@ -154,7 +154,7 @@ function getClientIDByParentRole($roleid, $parentrole)
     return $clientid;
 }
 
-function updateContact($userid, $contactid, $data_cd, $data_csd, $data_ca, $description)
+function updateEnterpreters($userid, $contactid, $data_cd, $data_csd, $data_ca, $description)
 {
     global $adb, $current_user;
     $loggedin_user = $current_user->id;

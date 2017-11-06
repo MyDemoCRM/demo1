@@ -71,3 +71,25 @@ function setCRMEntityRel($parent_id, $parent_module, $crmid, $module){
     $param = array($parent_id, $parent_module, $crmid, $module);
     $adb->pquery($sql, $param);
 }
+
+function getRoleDetailByUID($userid)
+{
+    global $adb;
+    $data = array();
+    $query = "SELECT r2p.profileid, u2r.`roleid`, r.parentrole FROM vtiger_users u
+            INNER JOIN vtiger_user2role u2r ON u2r.`userid` = u.id
+            INNER JOIN vtiger_role2profile r2p ON r2p.roleid = u2r.`roleid`
+            INNER JOIN vtiger_role r ON r.roleid  = u2r.`roleid`
+            WHERE u.status = 'Active' AND u.id = $userid";
+    $sqlQuery = $adb->query($query);
+    if ($adb->num_rows($sqlQuery)> 0) {
+        $result = $adb->fetch_row($sqlQuery);
+        $profileid = $result['profileid'];
+        $roleid = $result['roleid'];
+        $parentrole = $result['parentrole'];
+        $data['profileid'] = $profileid;
+        $data['roleid'] = $roleid;
+        $data['parentrole'] = $parentrole;
+    }
+    return $data;
+}
