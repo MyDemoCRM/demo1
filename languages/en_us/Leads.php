@@ -9,21 +9,21 @@
  *************************************************************************************/
 $languageStrings = array(
 	// Basic Strings
-	'Leads' => 'Leads',
-	'SINGLE_Leads' => 'Lead',
-	'LBL_RECORDS_LIST' => 'Leads List',
-	'LBL_ADD_RECORD' => 'Add Lead',
+	'Leads' => 'Contacts',
+	'SINGLE_Leads' => 'Contacts',
+	'LBL_RECORDS_LIST' => 'Contacts List',
+	'LBL_ADD_RECORD' => 'Add Contacts',
 
 	// Blocks
-	'LBL_LEAD_INFORMATION' => 'Lead Details',
+	'LBL_LEAD_INFORMATION' => 'Contacts Details',
 
 	//Field Labels
-	'Lead No' => 'Lead Number',
+	'Lead No' => 'Contacts Number',
 	'Company' => 'Company',
 	'Designation' => 'Designation',
 	'Website' => 'Website',
 	'Industry' => 'Industry',
-	'Lead Status' => 'Lead Status',
+	'Lead Status' => 'Contacts Status',
 	'No Of Employees' => 'Number of Employees',
 	'Phone' => 'Primary Phone',
 	'Secondary Email' => 'Secondary Email',
@@ -44,15 +44,15 @@ $languageStrings = array(
 	'Contact in Future'=>'Contact in Future',
 	'Contacted'=>'Contacted',
 	'Hot'=>'Hot',
-	'Junk Lead'=>'Junk Lead',
-	'Lost Lead'=>'Lost Lead',
+	'Junk Lead'=>'Junk Contacts',
+	'Lost Lead'=>'Lost Contacts',
 	'Not Contacted'=>'Not Contacted',
 	'Pre Qualified'=>'Pre Qualified',
 	'Qualified'=>'Qualified',
 	'Warm'=>'Warm',
 
 	// Mass Action
-	'LBL_CONVERT_LEAD' => 'Convert Lead',
+	'LBL_CONVERT_LEAD' => 'Convert Contacts',
 
 	//Convert Lead
 	'LBL_TRANSFER_RELATED_RECORD' => 'Transfer related record to',
@@ -61,9 +61,9 @@ $languageStrings = array(
 	'LBL_LEADS_FIELD_MAPPING' => 'Leads Field Mapping',
 
 	//Leads Custom Field Mapping
-	'LBL_CUSTOM_FIELD_MAPPING'=> 'Lead Conversion Data Mapping',
+	'LBL_CUSTOM_FIELD_MAPPING'=> 'Contacts Conversion Data Mapping',
 	'LBL_IMAGE_INFORMATION' => 'Profile Picture',
-	'Lead Image' => 'Lead Image',
+	'Lead Image' => 'Contacts Image',
 );
 $jsLanguageStrings = array(
 	'JS_SELECT_CONTACTS' => 'Select Contacts to proceed',

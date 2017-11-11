@@ -4,7 +4,7 @@ function setContactData($userid, $request, $user_role_details)
 {
     $first_name = $request->get('first_name');
     $last_name = $request->get('last_name');
-    $title = $request->get('title');
+    //$title = $request->get('title');
     $email1 = $request->get('email1');
     $email2 = $request->get('email2');
     $phone_work = $request->get('phone_work');
@@ -15,28 +15,25 @@ function setContactData($userid, $request, $user_role_details)
     $address_state = $request->get('address_state');
     $address_postalcode = $request->get('address_postalcode');
     $address_country = $request->get('address_country');
-    $data_cd = array(
+    $status = $request->get('status');
+    $data_ld = array(
         "firstname" => $first_name,
         "lastname" => $last_name,
-        "mobile" => $phone_work,
-        "title" => $title,
+        //"title" => $title,
         "email" => $email1,
+        "leadstatus" => $status,
         "secondaryemail" => $email2
 
     );
 
-    $data_csd = array(
-        "homephone" => $phone_mobile
-
-    );
-
-    $data_ca = array(
-        "mailingstreet" => $address_street,
-        "mailingcity" => $address_city,
-        "mailingstate" => $address_state,
-        "mailingzip" => $address_postalcode,
-        "mailingcountry" => $address_country
-
+    $data_la = array(
+        "phone" => $phone_mobile,
+        "mobile" => $phone_work,
+        "lane" => $address_street,
+        "city" => $address_city,
+        "state" => $address_state,
+        "code" => $address_postalcode,
+        "country" => $address_country
     );
 
     $profileid = $user_role_details['profileid'];
@@ -49,26 +46,26 @@ function setContactData($userid, $request, $user_role_details)
         $clientid = getClientIDByParentRole($roleid, $parentrole);
         if ($clientid != 0) {
             if ($contactid == '' || $contactid == 0)
-                createContact($clientid, $userid, $data_cd, $data_csd, $data_ca, $description);
+                createContact($clientid, $userid, $data_ld, $data_la, $description);
             else
-                updateContact($userid, $contactid, $data_cd, $data_csd, $data_ca, $description);
+                updateContact($userid, $contactid,  $data_ld, $data_la, $description);
         }
     }
 }
 
-function createContact($clientid, $userid, $data_cd, $data_csd, $data_ca, $description){
+function createContact($clientid, $userid, $data_ld, $data_la, $description){
     global $adb, $current_user;
     $current_user = $current_user->id;
-    $module = 'Contacts';
+    $module = 'Leads';
     $parent_module = 'Accounts';
 
     $currentdatetime = date("Y-m-d H:i:s");
     $crmid = $adb->getUniqueID("vtiger_crmentity");
-    $contact_no = getEntityNum($module);
-    insertCRMEntity($crmid, $userid, $current_user, $module, $currentdatetime, $contact_no, $description);
+    $lead_no = getEntityNum($module);
+    insertCRMEntity($crmid, $userid, $current_user, $module, $currentdatetime, $lead_no, $description);
 
     $entity_values = array(
-        'contact_no'=> $contact_no,
+        'lead_no'=> $lead_no,
         'assigned_user_id'=>$userid,
         'createdtime'=>$currentdatetime,
         'modifiedby'=>$current_user,
@@ -76,44 +73,39 @@ function createContact($clientid, $userid, $data_cd, $data_csd, $data_ca, $descr
         'record_module'=>$module
     );
 
-    $all_values = array_merge($entity_values, $data_cd,  $data_csd, $data_ca);
+    $all_values = array_merge($entity_values, $data_ld, $data_la);
 
-    $firstname = $data_cd['firstname'];
-    $last_name = $data_cd['lastname'];
-    $mobile = $data_cd['mobile'];
-    $title = $data_cd['title'];
-    $email1 = $data_cd['email'];
-    $secondaryemail = $data_cd['secondaryemail'];
+    $firstname = $data_ld['firstname'];
+    $last_name = $data_ld['lastname'];
+    $email1 = $data_ld['email'];
+    $secondaryemail = $data_ld['secondaryemail'];
+    $status = 'Active';
 
-    $homephone = $data_cd['homephone'];
+    $homephone = $data_la['phone'];
+    $mobile = $data_la['mobile'];
+    $mailingstreet = $data_la['lane'];
+    $mailingcity = $data_la['city'];
+    $mailingstate = $data_la['state'];
+    $mailingzip = $data_la['code'];
+    $mailingcountry = $data_la['country'];
 
-    $mailingstreet = $data_ca['mailingstreet'];
-    $mailingcity = $data_ca['mailingcity'];
-    $mailingstate = $data_ca['mailingstate'];
-    $mailingzip = $data_ca['mailingzip'];
-    $mailingcountry = $data_ca['mailingcountry'];
-
-    $query_cond = "INSERT INTO vtiger_contactdetails
-                  (contactid, contact_no, firstname, lastname, mobile, title, email, secondaryemail, accountid)
-                  VALUES(?,?,?,?,?,?,?,?,?)";
-    $param = array($crmid, $contact_no, $firstname, $last_name, $mobile, $title, $email1, $secondaryemail, $clientid);
+    $query_cond = "INSERT INTO vtiger_leaddetails
+                  (leadid, lead_no, firstname, lastname, email, secondaryemail, accountid, leadstatus)
+                  VALUES(?,?,?,?,?,?,?,?)";
+    $param = array($crmid, $lead_no, $firstname, $last_name, $email1, $secondaryemail, $clientid, $status);
     $adb->pquery($query_cond, $param);
 
-    $query_concsd = "INSERT INTO vtiger_contactsubdetails (contactsubscriptionid,homephone) VALUES(?,?)";
-    $param = array($crmid, $homephone);
-    $adb->pquery($query_concsd, $param);
-
-    $query_concf = "INSERT INTO vtiger_contactscf (contactid) VALUES(?)";
+    $query_concf = "INSERT INTO vtiger_leadscf (leadid) VALUES(?)";
     $param = array($crmid);
     $adb->pquery($query_concf, $param);
 
-    $query_custd = "INSERT INTO vtiger_customerdetails (customerid) VALUES(?)";
+    $query_consd = "INSERT INTO vtiger_leadsubdetails (leadsubscriptionid) VALUES(?)";
     $param = array($crmid);
-    $adb->pquery($query_custd, $param);
+    $adb->pquery($query_consd, $param);
 
-    $query_concd = "INSERT INTO vtiger_contactaddress (contactaddressid, mailingstreet, mailingcity, mailingstate, mailingzip, mailingcountry)
-                    VALUES(?,?,?,?,?,?)";
-    $param = array($crmid, $mailingstreet, $mailingcity, $mailingstate, $mailingzip, $mailingcountry);
+    $query_concd = "INSERT INTO vtiger_leadaddress (leadaddressid, phone, mobile, lane, city, state, code, country)
+                    VALUES(?,?,?,?,?,?,?,?)";
+    $param = array($crmid, $homephone, $mobile, $mailingstreet, $mailingcity, $mailingstate, $mailingzip, $mailingcountry);
     $adb->pquery($query_concd, $param);
 
     $mod_status = 2;
@@ -126,13 +118,13 @@ function contactUpsertStatus($userid)
 {
     global $adb;
     $contactid = 0;
-    $query = "SELECT con.`contactid` FROM vtiger_contactdetails con
-            INNER JOIN vtiger_crmentity crm ON crm.`crmid` = con.`contactid`
+    $query = "SELECT l.leadid FROM vtiger_leaddetails l
+            INNER JOIN vtiger_crmentity crm ON crm.`crmid` = l.leadid
             WHERE crm.`deleted` = 0 AND crm.smownerid = $userid";
     $sqlQuery = $adb->query($query);
     if ($adb->num_rows($sqlQuery)> 0) {
         $result = $adb->fetch_row($sqlQuery);
-        $contactid = $result['contactid'];
+        $contactid = $result['leadid'];
     }
     return $contactid;
 }
@@ -154,12 +146,12 @@ function getClientIDByParentRole($roleid, $parentrole)
     return $clientid;
 }
 
-function updateContact($userid, $contactid, $data_cd, $data_csd, $data_ca, $description)
+function updateContact($userid, $contactid, $data_ld, $data_la, $description)
 {
     global $adb, $current_user;
     $loggedin_user = $current_user->id;
-    $all_values = array_merge($data_cd, $data_csd, $data_ca);
-    $module = 'Contacts';
+    $all_values = array_merge($data_ld, $data_la);
+    $module = 'Leads';
     $mod_status = 0;
     $basic_id = 0;
     $currentdatetime = date("Y-m-d H:i:s");
@@ -168,21 +160,20 @@ function updateContact($userid, $contactid, $data_cd, $data_csd, $data_ca, $desc
     $sql = "SELECT
             con.firstname,
             con.lastname,
-            con.mobile,
-            con.title,
+            conad.mobile,
             con.email,
             con.secondaryemail,
-            consd.homephone,
-            conad.mailingstreet,
-            conad.mailingcity,
-            conad.mailingstate,
-            conad.mailingzip,
-            conad.mailingcountry
-            FROM vtiger_contactdetails con
-            INNER JOIN vtiger_crmentity crm ON crm.`crmid` = con.`contactid`
-            INNER JOIN vtiger_contactsubdetails consd ON consd.`contactsubscriptionid` = con.`contactid`
-            INNER JOIN vtiger_contactaddress conad ON conad.`contactaddressid` = con.`contactid`
-            WHERE crm.`deleted` = 0 AND con.`contactid` =? ";
+            con.leadstatus,
+            conad.phone,
+            conad.lane,
+            conad.city,
+            conad.state,
+            conad.code,
+            conad.country
+            FROM vtiger_leaddetails con
+            INNER JOIN vtiger_crmentity crm ON crm.`crmid` = con.`leadid`
+            INNER JOIN vtiger_leadaddress conad ON conad.`leadaddressid` = con.`leadid`
+            WHERE crm.`deleted` = 0 AND con.`leadid` =? ";
 
     $param = array($contactid);
     $fld_result = $adb->pquery($sql, $param);
@@ -213,12 +204,11 @@ function updateContact($userid, $contactid, $data_cd, $data_csd, $data_ca, $desc
     if ($update_values != '') {
         $update_values .= ", smownerid = '$userid', modifiedby = '$userid', modifiedtime = '$currentdatetime'";
         $insert_mod_values .= ", ('$basic_id', 'modifiedby', '$loggedin_user', '$loggedin_user')";
-        $sql = "UPDATE vtiger_contactdetails
-                INNER JOIN vtiger_crmentity ON vtiger_crmentity.`crmid` = vtiger_contactdetails.`contactid`
-                INNER JOIN vtiger_contactsubdetails ON vtiger_contactsubdetails.`contactsubscriptionid` = vtiger_contactdetails.`contactid`
-                INNER JOIN vtiger_contactaddress ON vtiger_contactaddress.`contactaddressid` = vtiger_contactdetails.`contactid`
+        $sql = "UPDATE vtiger_leaddetails
+                INNER JOIN vtiger_crmentity ON vtiger_crmentity.`crmid` = vtiger_leaddetails.`leadid`
+                INNER JOIN vtiger_leadaddress ON vtiger_leadaddress.`leadaddressid` = vtiger_leaddetails.`leadid`
                 SET $update_values
-                WHERE vtiger_crmentity.`deleted` = 0 AND vtiger_contactdetails.`contactid` = $contactid";
+                WHERE vtiger_crmentity.`deleted` = 0 AND vtiger_leaddetails.`leadid` = $contactid";
         $adb->query($sql);
 
         $sql = "INSERT INTO vtiger_modtracker_detail(id,fieldname,prevalue, postvalue) VALUES $insert_mod_values";
