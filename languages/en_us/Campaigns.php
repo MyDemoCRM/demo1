@@ -9,21 +9,21 @@
  *************************************************************************************/
 $languageStrings = array(
 	// Basic Strings
-	'Campaigns' => 'Campaigns',
-	'SINGLE_Campaigns' => 'Campaign',
-	'LBL_ADD_RECORD' => 'Add Campaign',
-	'LBL_RECORDS_LIST' => 'Campaigns List',
+	'Campaigns' => 'Requests',
+	'SINGLE_Campaigns' => 'Requests',
+	'LBL_ADD_RECORD' => 'Add Requests',
+	'LBL_RECORDS_LIST' => 'Requests List',
 
 	// Blocks
-	'LBL_CAMPAIGN_INFORMATION' => 'Campaign Details',
+	'LBL_CAMPAIGN_INFORMATION' => 'Requests Details',
 	'LBL_EXPECTATIONS_AND_ACTUALS' => 'Expectations & Actuals',
 
 	//Field Labels
-	'Campaign Name' => 'Campaign Name',
-	'Campaign No' => 'Campaign No', 
-	'Campaign Type' => 'Campaign Type', 
+	'Campaign Name' => 'Requests Name',
+	'Campaign No' => 'Requests No',
+	'Campaign Type' => 'Requests Type',
 	'Product' => 'Product',
-	'Campaign Status' => 'Campaign Status',
+	'Campaign Status' => 'Requests Status',
 	'Num Sent' => 'Num Sent',
 	'Sponsor' => 'Sponsor',
 	'Target Audience' => 'Target Audience',

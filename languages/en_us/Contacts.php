@@ -9,10 +9,10 @@
  *************************************************************************************/
 $languageStrings = array(
 	// Basic Strings
-	'Contacts' => 'Contacts',
-	'SINGLE_Contacts' => 'Contact',
-	'LBL_ADD_RECORD' => 'Add Contact',
-	'LBL_RECORDS_LIST' => 'Contacts List',
+	'Contacts' => 'Interpreters',
+	'SINGLE_Contacts' => 'Interpreters',
+	'LBL_ADD_RECORD' => 'Add Interpreters',
+	'LBL_RECORDS_LIST' => 'Interpreters List',
 
 	// Blocks
 	'LBL_CONTACT_INFORMATION' => 'Basic Information',

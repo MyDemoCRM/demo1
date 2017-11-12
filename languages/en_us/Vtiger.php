@@ -1146,7 +1146,7 @@ $languageStrings = array(
 	'LBL_ENGAGEMENT_HISTORY' => 'Engagement History',
 	'LBL_NO_ENGAGEMENTS_FOUND' => 'No related Touchpoints',
 	'LBL_MARKETING' => 'Administration',
-	'LBL_SALES' => 'SALES',
+	'LBL_SALES' => 'Databases',
 	'LBL_PROJECT' => 'PROJECTS',
 	'LBL_TAGS' => 'Tags',
 	'LBL_SHARE_TAGS' => 'Public Tags',
@@ -1406,7 +1406,7 @@ $jsLanguageStrings = array(
 	'OVERWRITE_EXISTING_MSG1' => 'Overwrite the existing address with the selected ',
 	'OVERWRITE_EXISTING_MSG2' => 'address details?',
 	'SINGLE_Accounts' => 'Clients',
-	'SINGLE_Contacts' => 'Contact',
+	'SINGLE_Contacts' => 'Interpreters',
 	'SINGLE_Project' => 'Project',
 	'SINGLE_ProjectMilestone' => 'Project Milestone',
 

@@ -73,17 +73,18 @@
 							<input type="text" class='inputElement col-sm-9' maxlength="50" name="fieldLabel" value="{vtranslate($FIELD_MODEL->get('label'), $SELECTED_MODULE_NAME)}" data-rule-required='true' style='width: 75%' />
 						</div>
 					</div>
-					{if !$IS_FIELD_EDIT_MODE}
-						<div class="form-group supportedType lengthsupported">
-							<label class="control-label fieldLabel col-sm-5">
-								Field Name
-								&nbsp;<span class="redColor">*</span>
-							</label>
-							<div class="controls col-sm-7">
-								<input type="text" class='inputElement col-sm-9' maxlength="50" name="fieldName"
-									   value="{vtranslate($FIELD_MODEL->get('label'), $SELECTED_MODULE_NAME)}" data-rule-required='true' style='width: 75%' />
-							</div>
+					<div class="form-group ">
+						<label class="control-label fieldLabel col-sm-5">
+							Field Name
+							&nbsp;<span class="redColor">*</span>
+						</label>
+						<div class="controls col-sm-7">
+							<input type="text" class='inputElement col-sm-9' maxlength="50" name="fieldName"
+								   value="{vtranslate($FIELD_MODEL->get('label'), $SELECTED_MODULE_NAME)}" data-rule-required='true' style='width: 75%' />
 						</div>
+					</div>
+					{if !$IS_FIELD_EDIT_MODE}
+
 
 						<div class="form-group supportedType lengthsupported">
 							<label class="control-label fieldLabel col-sm-5">
