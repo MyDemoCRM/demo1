@@ -58,7 +58,7 @@
 				var newFieldInfo = {$NEW_FIELDS_INFO};
 				return {
 					field: {
-						get: function (name, property) {
+						get: function (name, property)
 							if (name && property === undefined) {
 								return fieldInfo[name];
 							}
