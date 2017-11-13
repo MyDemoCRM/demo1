@@ -19,6 +19,7 @@ class Vtiger_Detail_View extends Vtiger_Index_View {
 		$this->exposeMethod('showModuleSummaryView');
 		$this->exposeMethod('showModuleBasicView');
 		$this->exposeMethod('showHistory');
+		$this->exposeMethod('showAvalability');
 		$this->exposeMethod('showRecentActivities');
 		$this->exposeMethod('showRecentComments');
 		$this->exposeMethod('showRelatedList');
@@ -393,6 +394,17 @@ class Vtiger_Detail_View extends Vtiger_Index_View {
 
 		$viewer = $this->getViewer($request);
 		echo $viewer->view('History.tpl', $moduleName, true);
+	}
+
+	/**
+	 * Funtion to show History view
+	 * @param Vtiger_Request $request
+	 */
+	function showAvalability(Vtiger_Request $request){
+		$moduleName = $request->getModule();
+
+		$viewer = $this->getViewer($request);
+		echo $viewer->view('Avalability.tpl', $moduleName, true);
 	}
 
 	/**

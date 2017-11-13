@@ -27,7 +27,16 @@
 					</a>
 				</li>
 			{/foreach}
-
+{*custom tab*}
+			{if $MODULE_NAME eq 'Contacts'}
+			<li class="tab-item " data-url="index.php?view=Detail&mode=showAvalability&page=1&module=Contacts&record={$smarty.request.record}&
+			tab_label=Avalability&app=SALES" data-label-key="Avalability" data-link-key="">
+				<a href="index.php?view=Detail&mode=showAvalability&page=1&module=Contacts
+			&record={$smarty.request.record}&tab_label=Avalability&app=SALES" class="textOverflowEllipsis">
+					<span class="tab-label"><strong>Availability</strong></span>
+				</a>
+			</li>
+			{/if}
 			{assign var=RELATEDTABS value=$DETAILVIEW_LINKS['DETAILVIEWRELATED']}
 			{assign var=COUNT value=$RELATEDTABS|@count}
 
@@ -50,7 +59,7 @@
 							<span class="tab-label" ><strong>{$DETAILVIEWRELATEDLINKLBL}</strong></span>&nbsp;
 								{else}
 							<span class="tab-icon">
-								{assign var=RELATED_MODULE_MODEL value=Vtiger_Module_Model::getInstance($RELATEDMODULENAME)}  
+								{assign var=RELATED_MODULE_MODEL value=Vtiger_Module_Model::getInstance($RELATEDMODULENAME)}
 								<i class="vicon-{strtolower($RELATEDMODULENAME)}" ></i>
 							</span>
 						{/if}
@@ -73,9 +82,9 @@
 							<a href="index.php?{$RELATED_LINK->getUrl()}&tab_label={$RELATED_LINK->getLabel()}&app={$SELECTED_MENU_CATEGORY}" class="textOverflowEllipsis" displaylabel="{$DETAILVIEWRELATEDLINKLBL}" recordsCount="" >
 								{if $RELATEDMODULENAME eq "ModComments"}
 									<span class="tab-label" ><strong>{$DETAILVIEWRELATEDLINKLBL}</strong></span>&nbsp;
-								{else}  
+								{else}
 									<span class="tab-icon">
-										{assign var=RELATED_MODULE_MODEL value=Vtiger_Module_Model::getInstance($RELATEDMODULENAME)}  
+										{assign var=RELATED_MODULE_MODEL value=Vtiger_Module_Model::getInstance($RELATEDMODULENAME)}
 										<i class="vicon-{strtolower($RELATEDMODULENAME)}" ></i>
 									</span>
 								{/if}
@@ -89,7 +98,7 @@
 			{if $COUNT gt $LIMIT}
 				<li class="dropdown related-tab-more-element">
 					<a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle">
-						<span class="tab-label"> 
+						<span class="tab-label">
 							<strong>{vtranslate("LBL_MORE",$MODULE_NAME)}</strong> &nbsp; <b class="fa fa-caret-down"></b>
 						</span>
 					</a>
@@ -104,8 +113,8 @@
 								<a href="index.php?{$RELATED_LINK->getUrl()}&tab_label={$RELATED_LINK->getLabel()}&app={$SELECTED_MENU_CATEGORY}" displaylabel="{$DETAILVIEWRELATEDLINKLBL}" recordsCount="">
 									{if $RELATEDMODULENAME eq "ModComments"}
 										<span class="tab-label textOverflowEllipsis"><strong>{$DETAILVIEWRELATEDLINKLBL}</strong></span>&nbsp;
-									{else}  
-										{assign var=RELATED_MODULE_MODEL value=Vtiger_Module_Model::getInstance($RELATEDMODULENAME)}  
+									{else}
+										{assign var=RELATED_MODULE_MODEL value=Vtiger_Module_Model::getInstance($RELATEDMODULENAME)}
 										<span class="tab-icon textOverflowEllipsis">
 											<i class="vicon-{strtolower($RELATEDMODULENAME)}"></i>
 											<span class="content"> &nbsp;{$DETAILVIEWRELATEDLINKLBL}</span>
